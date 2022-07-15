@@ -12,13 +12,13 @@
 
 <body>
   <h1>Привет, PHP</h1>
-  <?php 
+  <!-- <?php 
     if(isset($_GET['name'])) {
       var_dump($_GET['name']);
     } else {
       echo 'no queries';
     }
-  ?>
+  ?> -->
 
   <?php
     include __DIR__ . '/functions.php';
@@ -99,8 +99,40 @@
       <?php 
       }
       ?>
-    </ul> -->
-  </div>
+    </ul> 
+  </div> -->
+
+  <!-- LESSON 4  file-->
+  <!-- <?php
+  
+    $path = __DIR__ . '/text.txt';
+    
+    // $lines = file_get_contents($path);
+
+    // var_dump($lines);
+
+    $fh = fopen($path, 'w');
+    file_put_contents($path, 'Hello, world!');
+    $lines = file_get_contents($path);
+    
+    echo $lines;
+    
+    var_dump(scandir(__DIR__));
+    
+    // $fh = fopen($path, 'r');
+    
+    // while(false !== ($line = fgets($fh))) {
+    //   echo $line;
+    // }
+
+    fclose($fh);
+
+  ?> -->
+
+  <form action='upload.php' method='post' enctype='multipart/form-data'>
+    <input type="file" name="picture">
+    <button type='submit'>SEND</button>
+  </form>
 
 </body>
 

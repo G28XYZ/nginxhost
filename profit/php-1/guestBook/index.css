@@ -1,0 +1,29 @@
+.guest__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  max-height: 50vh;
+  width: 30%;
+  overflow: auto;
+}
+
+.guest__list-item {
+  display: flex;
+  gap: 20px;
+}
+
+.guest__delete-button {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: 1px solid red;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.guest__list-item,
+p {
+  margin: 0;
+}
