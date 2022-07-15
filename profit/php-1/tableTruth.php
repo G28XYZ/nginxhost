@@ -34,20 +34,20 @@ function tableTruth(string $operator, string $templateTable): string {
   
   switch((string) $operator) {
     case '&&':
-      for ($i=0; $i < count($values); $i++) { 
-        $values[$i][2] = $values[$i][0] && $values[$i][1]  ? 1 : 0;
+      foreach ($values as $key => $value) {
+        $values[$key][2] = $values[$key][0] && $values[$key][1]  ? 1 : 0;
       }
       return sprintf($templateTable, $operator, generateRows($values));
       break;
     case '||':
-      for ($i=0; $i < count($values); $i++) { 
-        $values[$i][2] = $values[$i][0] || $values[$i][1]  ? 1 : 0;
+      foreach ($values as $key => $value) {
+        $values[$key][2] = $values[$key][0] || $values[$key][1]  ? 1 : 0;
       }
       return sprintf($templateTable, $operator, generateRows($values));
       break;
     case 'xor':
-      for ($i=0; $i < count($values); $i++) { 
-        $values[$i][2] = ($values[$i][0] xor $values[$i][1]) ? 1 : 0;
+      foreach ($values as $key => $value) {
+        $values[$key][2] = ($values[$key][0] xor $values[$key][1]) ? 1 : 0;
       }
       return sprintf($templateTable, $operator, generateRows($values));
       break;
@@ -55,3 +55,5 @@ function tableTruth(string $operator, string $templateTable): string {
       return 'unknown';
   }
 }
+
+return 'tableTruth';
