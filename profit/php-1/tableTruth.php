@@ -1,6 +1,6 @@
 <?php
 
-$templateTable = "<table>
+$templateTable = (string) "<table>
 <thead>
   <tr>
       <th>a</th>
@@ -13,7 +13,7 @@ $templateTable = "<table>
 </table>";
 
 
-function generateRow($values): string {
+function generateRows(array $values): string {
   $rows = '';
   for ($i = 0; $i < count($values); $i++) {
     $a = $values[$i][0];
@@ -24,32 +24,32 @@ function generateRow($values): string {
         <td>%s</td>
         <td>%s</td>
         <td>%s</td>
-      </tr>", $a, $b, $c ?: 0);
+      </tr>", $a, $b, $c);
   }
   return $rows;
 }
 
-function tableTruth(string $operator, $templateTable): string {
-  $values = array('0' => array('0','0'), '1' => array('0','1'), '2' => array('1','0'), '3' => array('1','1'));
+function tableTruth(string $operator, string $templateTable): string {
+  $values = (array) array('0' => array('0','0'), '1' => array('0','1'), '2' => array('1','0'), '3' => array('1','1'));
   
-  switch($operator) {
+  switch((string) $operator) {
     case '&&':
       for ($i=0; $i < count($values); $i++) { 
-        $values[$i][2] = $values[$i][0] && $values[$i][1];
+        $values[$i][2] = $values[$i][0] && $values[$i][1]  ? 1 : 0;
       }
-      return sprintf($templateTable, $operator, generateRow($values));
+      return sprintf($templateTable, $operator, generateRows($values));
       break;
     case '||':
       for ($i=0; $i < count($values); $i++) { 
-        $values[2] = $values[0] || $values[1];
+        $values[$i][2] = $values[$i][0] || $values[$i][1]  ? 1 : 0;
       }
-      return sprintf($templateTable, $operator, generateRow($values));
+      return sprintf($templateTable, $operator, generateRows($values));
       break;
     case 'xor':
       for ($i=0; $i < count($values); $i++) { 
-        $values[2] = $values[0] xor $values[1];
+        $values[$i][2] = ($values[$i][0] xor $values[$i][1]) ? 1 : 0;
       }
-      return sprintf($templateTable, $operator, generateRow($values));
+      return sprintf($templateTable, $operator, generateRows($values));
       break;
     default:
       return 'unknown';
