@@ -84,24 +84,6 @@
     </form>
   </div> -->
 
-  <!-- <div>
-    Gallery
-    <ul>
-      <?php 
-      include __DIR__ . '/image.php';
-      foreach($images as $key=>$image) {
-        ?>
-      <li>
-        <a href="image.php?id=<?php echo $key; ?>">
-          <img style="width: 100px" src="<?php echo $image ?>"></img>
-        </a>
-      </li>
-      <?php 
-      }
-      ?>
-    </ul> 
-  </div> -->
-
   <!-- LESSON 4  file-->
   <!-- <?php
   
