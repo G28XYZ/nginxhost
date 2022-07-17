@@ -1,6 +1,6 @@
 <?php 
-  require_once __DIR__ . '/classes/Table.php';
-  require_once __DIR__ . '/classes/Cabinet.php';
+  require_once __DIR__ . '/classes/GuestBook.php';
+  
   session_start();
 ?>
 
@@ -18,7 +18,32 @@
 
 <body>
   <h1>Привет, PHP</h1>
+  <?php
+  // function sendMessage(User $user, $message) {
+  //   echo $user->email . '-->' . $message;
+  // }
 
+  // $user = new User();
+
+  // $user->email = 'test@mail.ru';
+
+  // sendMessage($user, 'Hello')
+
+  $guestBook = new GuestBook();
+
+  ?>
+
+  <?php
+    foreach ($guestBook->getRecords() as $record) { ?>
+  <?php echo $record->getMessage(); ?>
+  <hr>
+  <?php
+  } ?>
+
+  <form action="functions.php" method='post'>
+    <textarea name="message" cols="30" rows="10"></textarea>
+    <button type='submit'>Send message</button>
+  </form>
 </body>
 
 </html>
