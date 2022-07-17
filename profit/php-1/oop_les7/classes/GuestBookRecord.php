@@ -1,8 +1,10 @@
 <?php
 
-class GuestBookRecord {
+require_once __DIR__ . '/View.php';
+class GuestBookRecord extends View {
 
   protected $message;
+  protected $author = '';
 
   public function __construct($message)
   {
@@ -11,5 +13,10 @@ class GuestBookRecord {
 
   public function getMessage() {
     return $this->message;
+  }
+
+  public function getAuthor()
+  {
+      return $this->author;
   }
 }
