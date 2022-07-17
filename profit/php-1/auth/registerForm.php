@@ -4,7 +4,6 @@ $isRegister = false;
 
 if(isset($_POST['name']) && isset($_POST['password'])) {
   $users = getUserList();
-  $isAuth = false;
   foreach($users as $user) {
     if($user->name === $_POST['name']) {
       $isRegister = true;

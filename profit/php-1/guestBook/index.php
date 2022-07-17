@@ -1,30 +1,27 @@
 <?php 
   
+  require_once __DIR__ . '/classes/GuestBook.php';
+
   include __DIR__ . '/guests.php';
 
   $file = __DIR__ . '/guests.txt';
 
+  $guestBook = new GuestBook($file);
+  $guestList = $guestBook->getData();
+
   $server_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
   
-  $fh = fopen($file, 'r');
-  
-  $guestList = [];
-
-  while(false !== ($line = fgets($fh))) {
-    $guestList[] = $line;
-  }
-
-  fclose($fh);
 
 
   if(isset($_GET['name'])) {
-    addGuest($_GET['name']);
-    header('Location: ' . $server_path);
+    $guestBook->append(($_GET['name']));
+    $guestBook->save();
+    header('Location: ./');
   }
 
   if(isset($_GET['id'])) {
     deleteGuest($_GET['id']);
-    header('Location: ' . $server_path);
+    header('Location: ./');
   }
 
 ?>

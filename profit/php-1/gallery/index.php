@@ -1,3 +1,19 @@
+<?php
+  require_once __DIR__ . '/classes/Upload.php';
+  require_once __DIR__ . '/classes/UploadUrl.php';
+
+  $file = new Upload($_FILES, __DIR__ . '/images/');
+  if($file->isUploaded()) {
+    $file->upload();
+  }
+
+  $fileFromUrl = new UploadUrl($_POST, __DIR__ . '/images/');
+  if($fileFromUrl->isUploaded()) {
+    $fileFromUrl->upload();
+  }
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,12 +44,12 @@
       ?>
     </ul>
 
-    <form action="upload.php" method="post" enctype='multipart/form-data'>
-      <input type="text" name='url' placeholder="url image">
+    <form action="" method="post" enctype='multipart/form-data'>
+      <input type="text" name='picture' placeholder="url image">
       <button type='submit'>ADD FROM URL</button>
     </form>
 
-    <form action="upload.php" method="post" enctype='multipart/form-data'>
+    <form action="" method="post" enctype='multipart/form-data'>
       <input type="file" name="picture">
       <button type='submit'>ADD FROM PC</button>
     </form>

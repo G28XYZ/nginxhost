@@ -35,15 +35,16 @@ session_start();
 
   ?>
   <?php 
-    if($user['isAuth'] === false) {
-      ?>
-  <?php !($_GET['login'] ?? '') && include './registerForm.php' ?>
-  <?php ($_GET['login'] ?? '') && include './loginForm.php' ?>
-  <?php
-    } else {
+    if($user['isAuth']) {
       ?>
   <button class='auth__logout'>Logout</button>
   <p>Привет <?php echo $user['name'] ?>!</p>
+
+  <?php
+    } else {
+      ?>
+  <?php !($_GET['login'] ?? '') && include './registerForm.php' ?>
+  <?php ($_GET['login'] ?? '') && include './loginForm.php' ?>
   <?php
     }
   ?>

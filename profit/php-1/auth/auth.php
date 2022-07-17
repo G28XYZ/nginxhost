@@ -9,7 +9,7 @@ function createUser(array $data) {
   $users = json_decode(file_get_contents('users.json'));
   if(isset($data['name']) && isset($data['password'])) {
     $data['password'] = password_hash($data['password'] . 'JWT_SECRET', PASSWORD_DEFAULT);
-    array_push($users, $data);
+    $users[] = $data;
     file_put_contents('users.json', json_encode($users));
   }
 }
