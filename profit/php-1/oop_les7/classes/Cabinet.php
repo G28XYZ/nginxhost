@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/Item.php';
-
 class Cabinet extends Item {
   public $doors;
 

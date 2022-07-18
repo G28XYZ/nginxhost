@@ -1,7 +1,6 @@
 <?php
 
-require __DIR__ . '/classes/GuestBook.php';
-require_once __DIR__ . '/classes/View.php';
+require __DIR__ . '/autoload.php';
 
 $guestBook = new GuestBook();
 

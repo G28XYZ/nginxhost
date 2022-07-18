@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . '/View.php';
 class GuestBookRecord extends View {
 
   protected $message;

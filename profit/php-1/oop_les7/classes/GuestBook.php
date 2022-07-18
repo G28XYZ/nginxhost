@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/GuestBookRecord.php';
-
 class GuestBook {
 
   protected $path;
