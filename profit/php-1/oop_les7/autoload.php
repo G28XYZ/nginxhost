@@ -1,5 +1,6 @@
 <?php
 
-spl_autoload_register(function ($class) {
-  include __DIR__ . '/classes/' . $class . '.php';
+spl_autoload_register(function ($className) {
+  include __DIR__ . '/classes/' . 
+  str_replace('\\', '/', $className) . '.php';
 });

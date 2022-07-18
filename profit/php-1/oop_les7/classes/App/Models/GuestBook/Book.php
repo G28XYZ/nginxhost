@@ -1,16 +1,18 @@
 <?php
 
-class GuestBook {
+namespace App\Models\GuestBook;
+
+class Book {
 
   protected $path;
   protected $data = [];
 
   public function __construct()
   {
-    $this->path = __DIR__ . '/../data.txt';
+    $this->path = __DIR__ . '/../../../../data.txt';
     $lines = file($this->path, FILE_IGNORE_NEW_LINES);
     foreach($lines as $line) {
-      $this->data[] = new GuestBookRecord($line);
+      $this->data[] = new Record($line);
     }
   }
 
@@ -18,7 +20,7 @@ class GuestBook {
     return $this->data;
   }
 
-  public function append(GuestBookRecord $record) {
+  public function append(Record $record) {
     $this->data[] = $record;
   }
 

@@ -1,6 +1,11 @@
 <?php
 
-class GuestBookRecord extends View {
+
+namespace App\Models\GuestBook;
+
+use App\View;
+
+class Record extends View {
 
   protected $message;
   protected $author = '';

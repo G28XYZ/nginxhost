@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Shop;
+
 class Item {
   protected $price;
   public $color;

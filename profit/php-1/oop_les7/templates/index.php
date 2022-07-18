@@ -12,14 +12,14 @@
 
 <body>
   <?php 
-  foreach ($this->data['guestBook']->getRecords() as $record) { 
+  foreach ($this->data['book']->getRecords() as $record) { 
       $record->display(__DIR__ . '/guestBookRecord.php');
   }
   ?>
   <hr>
 
 
-  <form action="/functions.php" method='post'>
+  <form action="/oop_les7/classes/functions.php" method='post'>
     <textarea name="message" cols="30" rows="10"></textarea>
     <button type='submit'>Send message</button>
   </form>
