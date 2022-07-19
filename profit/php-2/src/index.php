@@ -2,7 +2,7 @@
 
 
 // phpinfo();
-$dbh = new PDO('mysql:host=some-mysql;dbname=sandbox', 'root', '111');
+$dbh = new PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
 // use Models\Product;
 // use Models\User;
 
