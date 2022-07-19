@@ -1,8 +1,8 @@
 <?php
-
-
+ini_set("html_errors",true);
+$ENV = getenv();
 // phpinfo();
-$dbh = new PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
+$dbh = new PDO('pgsql:host=db;dbname=php', 'postgres', 'db_php2_pass');
 // use Models\Product;
 // use Models\User;
 
@@ -10,8 +10,6 @@ $dbh = new PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
 //     require __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
 // });
 
-// $data = Product::findAll();
-// var_dump($data);
 
 // $data = User::findAll();
 // var_dump($data);

@@ -9,6 +9,7 @@ services:
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./nginx/sites/:/etc/nginx/sites-available
             - ./nginx/conf.d/:/etc/nginx/conf.d
+            - ./logs:/var/log
         depends_on:
             - php-fpm
             - db
@@ -21,7 +22,7 @@ services:
         depends_on:
             - db
         env_file:
-            - ./.env
+            - ./../.env
         environment:
             - APP_ENV=${APP_ENV}
             - APP_SECRET=${APP_SECRET}
@@ -32,8 +33,10 @@ services:
         container_name: db
         image: postgres:latest
         restart: always
+        env_file:
+            - ./../.env
         environment:
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: postgres
+            POSTGRES_PASSWORD: db_php2_pass
+            POSTGRES_DB: php2
         ports:
             - 15432:5432

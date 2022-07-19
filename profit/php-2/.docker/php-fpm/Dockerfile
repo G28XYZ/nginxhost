@@ -13,7 +13,8 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
 RUN apk add nodejs neovim ripgrep alpine-sdk --update && \
     git clone https://github.com/NvChad/NvChad ~/.config/nvim
 
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+# copy config php to path in machine
+COPY ./php.ini-production /usr/local/etc/php/php.ini
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
