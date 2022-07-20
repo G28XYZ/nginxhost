@@ -8,8 +8,15 @@ use Models\Service;
 
 require __DIR__ . '/autoload.php';
 
-$product = new Product();
-$product->title = 'Test other';
-$product->price = 100;
-$product->save();
-$product->delete();
+$products = Product::findAll();
+$services = Service::findAll();
+
+$view = new View();
+
+$view->products = Product::findAll();
+$view->services = Service::findAll();
+
+echo count($view);
+
+$html = $view->render(__DIR__ . '/Templates/main.php');
+echo $html;

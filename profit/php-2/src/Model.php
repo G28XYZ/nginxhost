@@ -1,8 +1,8 @@
 <?php
 
+// модель для инкапсюлации работы с бд в других классах
 abstract class Model
 {
-
     protected const TABLE = '';
 
     public int $id;
