@@ -2,16 +2,20 @@
 
 class Db
 {
+    protected static $instance = null;
 
     protected PDO $dbh;
 
-    public function __construct()
+    public static function instance() {
+        if(null === self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    protected function __construct()
     {
-        $this->dbh = new \PDO(
-            'pgsql:host='. $_ENV['DB_HOST'] .
-            ';dbname=' . $_ENV['DB_NAME'],
-            $_ENV['DB_USER'],
-            $_ENV['DB_PASSWORD']);
+        $this->dbh = new \PDO('pgsql:host=db;dbname=php2','postgres','db_php2_pass');
     }
 
     public function query($sql, $class): array
@@ -19,6 +23,16 @@ class Db
         $sth = $this->dbh->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS, $class);
+    }
+
+    public function execute($sql, $data=[]): bool
+    {
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($data);
+    }
+
+    public function lastId() {
+        return $this->dbh->lastInsertId();
     }
 
 }

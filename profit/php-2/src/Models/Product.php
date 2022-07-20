@@ -2,16 +2,16 @@
 
 namespace Models;
 
-class Product extends \Model implements HasPrice
+class Product extends \Model implements HasPriceInterface, HasTitle
 {
+
+    use HasPriceTrait;
 
     protected const TABLE = 'products';
 
     public string $title;
-    public int $price;
 
-    public function getPrice(): int {
-        return $this->price;
+    public function getTitle(): string {
+        return $this->title;
     }
-
 }
