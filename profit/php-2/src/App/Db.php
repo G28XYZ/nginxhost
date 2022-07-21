@@ -1,5 +1,10 @@
 <?php
 
+namespace App;
+
+use PDO;
+use App\Exceptions\ServerError;
+
 class Db
 {
     protected static $instance = null;
@@ -18,10 +23,13 @@ class Db
         $this->dbh = new \PDO('pgsql:host=db;dbname=php2','postgres','postgres');
     }
 
-    public function query($sql, $class, $data=[]): array
+    public function query($sql, $class, $params=[]): array
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute($data);
+        $res = $sth->execute($params);
+        if(!$res) {
+            throw new ServerError('Error: ' . $sql);
+        }
         return $sth->fetchAll(PDO::FETCH_CLASS, $class);
     }
 

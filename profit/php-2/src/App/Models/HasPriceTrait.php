@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
 trait HasPriceTrait {
     public int $price;

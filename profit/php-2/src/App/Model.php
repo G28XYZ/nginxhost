@@ -1,5 +1,9 @@
 <?php
 
+namespace App;
+
+use App\Db;
+
 // модель для инкапсуляции работы с бд в других классах
 abstract class Model
 {
@@ -14,11 +18,12 @@ abstract class Model
         return $db->query($sql, static::class);
     }
 
-    public static function findById(string $id)
+    public static function findById(string $id): ?object
     {
         $db = Db::instance();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
-        return $db->query($sql, static::class, [':id'=>$id]);
+        $data = $db->query($sql, static::class, [':id'=>$id]);
+        return empty($data) ? null : $data[0];
     }
 
     public function insert() {

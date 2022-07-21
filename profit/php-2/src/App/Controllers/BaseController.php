@@ -1,8 +1,9 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
 abstract class BaseController {
+
     protected \View $view;
 
     public function __construct()

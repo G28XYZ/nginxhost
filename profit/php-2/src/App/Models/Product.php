@@ -1,8 +1,10 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-class Product extends \Model implements HasPriceInterface, HasTitle
+use \App\Model;
+
+class Product extends Model implements HasPriceInterface, HasTitle
 {
 
     use HasPriceTrait;

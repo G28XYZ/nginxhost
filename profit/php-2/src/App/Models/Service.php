@@ -1,8 +1,9 @@
 <?php
 
-namespace Models;
+namespace App\Models;
+use App\Model;
 
-class Service extends \Model implements HasPriceInterface
+class Service extends Model implements HasPriceInterface
 {
 
     use HasPriceTrait;
