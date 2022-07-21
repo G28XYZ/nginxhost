@@ -22,7 +22,7 @@
     foreach($this->products as $product) : ?>
     <tr>
       <td><?php echo $product->id ?></td>
-      <td><?php echo $product->title ?></td>
+      <td><a href="/?ctrl=Product&id=<?php echo $product->id ?>"><?php echo $product->title ?></a></td>
       <td><?php echo $product->price ?></td>
     </tr>
     <?php endforeach; ?>

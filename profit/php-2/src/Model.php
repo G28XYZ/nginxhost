@@ -1,6 +1,6 @@
 <?php
 
-// модель для инкапсюлации работы с бд в других классах
+// модель для инкапсуляции работы с бд в других классах
 abstract class Model
 {
     protected const TABLE = '';
@@ -12,6 +12,13 @@ abstract class Model
         $db = Db::instance();
         $sql = 'SELECT * FROM ' . static::TABLE;
         return $db->query($sql, static::class);
+    }
+
+    public static function findById(string $id)
+    {
+        $db = Db::instance();
+        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
+        return $db->query($sql, static::class, [':id'=>$id]);
     }
 
     public function insert() {

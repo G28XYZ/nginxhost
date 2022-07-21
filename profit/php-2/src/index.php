@@ -2,21 +2,18 @@
 
 declare(strict_types=1);
 
-use Models\HasPriceInterface;
-use Models\Product;
-use Models\Service;
-
 require __DIR__ . '/autoload.php';
 
-$products = Product::findAll();
-$services = Service::findAll();
+var_dump($_SERVER['REQUEST_URI']);
 
-$view = new View();
+$ctrl = $_GET['ctrl'] ?? 'Index';
 
-$view->products = Product::findAll();
-$view->services = Service::findAll();
 
-echo count($view);
+$class = '\\Controllers\\' . $ctrl;
 
-$html = $view->render(__DIR__ . '/Templates/main.php');
-echo $html;
+if(class_exists($class)) {
+    $ctrl = new $class;
+    $ctrl();
+} else {
+    die('Страницы не существует');
+}

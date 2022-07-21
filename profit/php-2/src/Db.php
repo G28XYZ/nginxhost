@@ -15,13 +15,13 @@ class Db
 
     protected function __construct()
     {
-        $this->dbh = new \PDO('pgsql:host=db;dbname=php2','postgres','db_php2_pass');
+        $this->dbh = new \PDO('pgsql:host=db;dbname=php2','postgres','postgres');
     }
 
-    public function query($sql, $class): array
+    public function query($sql, $class, $data=[]): array
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute();
+        $sth->execute($data);
         return $sth->fetchAll(PDO::FETCH_CLASS, $class);
     }
 

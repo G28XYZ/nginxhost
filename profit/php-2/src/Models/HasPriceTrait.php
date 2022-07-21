@@ -8,4 +8,7 @@ trait HasPriceTrait {
     public function getPrice():int {
         return $this->price;
     }
+
+
+
 }
